@@ -7,22 +7,31 @@ on:
 
 # mention job
 jobs:
-
-# this is 1st job
-    introd:
-        runs-on: ubuntu-latest
-        steps:
-            - name: this is 1st job
-              run: docker --version
-              
-            - name: this is 2nd job
-              run: python --version
-
-    introd1:
-        runs-on: ubuntu-latest
-        steps:
-            - name: testing my job steps 
-              run: echo " job 2 running"
+  # every job needs seperate runner, its called parallelism
+  code:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout code
+        run: echo "COde Clone from GitHub"
+  build:
+    needs: [code]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build Docker Container
+        run: echo "Docker Container build"
+  test:
+    needs: [build]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test the container
+        run: echo "Testing the container"
+        
+  deploy:
+    needs: [build,test]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploying the app
+        run: echo "Docker compose deployed the app"
               
           
     
