@@ -1,17 +1,28 @@
 # name of worklow
 name: cicd workflow
 
+# runs on manual click
+on:
+    workflow_dispatch: 
+
 # mention job
 jobs:
 
 # this is 1st job
-introd:
-    runs-on: ubuntu-latest
-    steps:
-        - name: this is 1st job
-          run: docker --version
-          
-        - name: this is 2nd job
-          run: python --version
+    introd:
+        runs-on: ubuntu-latest
+        steps:
+            - name: this is 1st job
+              run: docker --version
+              
+            - name: this is 2nd job
+              run: python --version
+
+    introd1:
+        runs-on: ubuntu-latest
+        steps:
+            - name: testing my job steps 
+              run: echo " job 2 running"
+              
           
     
