@@ -1,0 +1,17 @@
+# name of worklow
+name: cicd workflow
+
+# mention job
+jobs:
+
+# this is 1st job
+introd:
+    runs-on: ubuntu-latest
+    steps:
+        - name: this is 1st job
+          run: docker --version
+          
+        - name: this is 2nd job
+          run: python --version
+          
+    
